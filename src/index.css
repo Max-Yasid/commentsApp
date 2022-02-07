@@ -1,3 +1,15 @@
+:root{
+  --main-color: hsl(238, 40%, 52%);
+  --secondary-color: hsl(239, 57%, 85%);
+  --danger-color: hsl(358, 79%, 66%);
+  --soft-danger-color: hsl(357, 100%, 86%);
+  --background-color: hsl(228, 33%, 97%);
+
+  --main-font: 'Rubik', sans-serif;
+}
+html, body, #root, .App {
+  min-height: 100%;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +22,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.borde{
+  border:2px solid black;
 }

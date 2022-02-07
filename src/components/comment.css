@@ -1,0 +1,118 @@
+/* ****************** COMMENT WITTH REPLIES COMPONENT ********************** */
+.commentWithReplies{
+    width: 100%;
+}
+.commentWithReplies__repliesContent{
+    display: grid;
+    grid-template-columns: 10% 90%;
+    margin-top: 20px;
+}
+.commentWithReplies__verticalLine{
+}
+.commentWithReplies__verticalLine::before{
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 99%;
+    background-color: hsl(223, 19%, 93%);
+}
+
+.commentWithReplies__replies{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ********************* COMMENT TEMPLATE COMPONENT ************************* */
+.comment{
+    min-width: calc(100% - 9vw);
+    display: grid;
+    grid-template-columns: 30% 70%;
+    gap: 10px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+.comment__header{
+    grid-column: 1/3;
+    display: flex;
+    gap: 5%;
+    align-items: center;
+}
+.comment__thumbnail{
+}
+.comment__username{
+    color: hsl(212, 24%, 26%);
+    font-weight: bolder;
+}
+.comment_youText{
+    color: white;
+    background-color: var(--main-color);
+    font-weight: bold;
+    font-size: 10px;
+    padding: 4px 5px;
+}
+.comment__date{
+    color: hsl(211, 10%, 45%);
+    margin-left: auto;
+    margin-right: 15px;
+}
+.comment__content{
+    grid-column: 1/3;
+    width: calc(100% - 15px);
+    color: hsl(211, 10%, 45%);
+    word-break: break-word;
+}
+.comment__content--edit{
+    border: 1px solid hsl(212, 24%, 26%);
+    color: black;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.comment__content--edit:focus{
+    outline: none;
+}
+.comment__editButtonContainer{
+    grid-column: 1/3;
+    width: calc(100% - 15px);
+    text-align: end;
+}
+.comment__btnEdit{
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 7px;
+}
+.comment__replyContentUsername{
+    color: var(--main-color);
+    font-weight: bolder;
+}
+.comment__likes{
+    background-color: var(--background-color);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 40px;
+    border-radius: 10px;
+}
+.comment__likeCounter{
+    font-weight: bolder;
+    color: var(--main-color);
+    display: grid;
+    place-items: center;
+}
+.comment__likeComment, .comment__dislikeComment{
+    border: 0;
+    background-color: transparent;
+    color: var(--secondary-color);
+    text-align: center;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.comment__options{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 15px;
+}

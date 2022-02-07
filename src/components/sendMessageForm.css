@@ -1,0 +1,46 @@
+.containerAll{
+}
+.messageFormContainer{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    left: 0;
+    background-color: var(--background-color);
+    padding-bottom: 15px;
+}
+.messageForm{
+    margin: 20px auto 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background-color: white;
+    padding: 10px;
+    width: 86vw;
+    min-height: 130px;
+}
+.messageForm__input{
+    grid-column: 1/3;
+    resize: vertical;
+    border: 1px solid hsl(228, 33%, 97%);
+    font-size: 18px;
+    padding: 5px;
+}
+.messageForm__replyContentUsername{
+    color: var(--main-color);
+    font-weight: bolder;
+}
+.messageForm__input:focus{
+    outline: none;
+}
+.messageForm__submit{
+    text-align: end;
+}
+.messageForm__btnSubmit{
+    background-color: var(--main-color);
+    border: none;
+    color: white;
+    width: 65%;
+    min-width: 50px;
+    height: 45px;
+    border-radius: 7px;
+}
