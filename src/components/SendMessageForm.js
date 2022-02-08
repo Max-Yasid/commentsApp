@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './sendMessageForm.css';
 import * as uuid from 'uuid';
 import { useStore } from './../contextAPI/context';
@@ -8,16 +8,21 @@ function SendMessageForm({ replyCommentData, setReplyCommentData }) {
     const { currentUser , addComment, replyComment } = useStore();
     let textareaRef = useRef(null);
     let containerAllRef = useRef(null);
+    const [lastToReplyUser, setLastToReplyUser] = useState(null);
     useEffect(() => {
         let textareaElem = textareaRef.current;
         if(textareaElem){
             let usernameSpan = null;
             let checkIfUserRemovedReplierNameFromComment = ({ target: { innerHTML } }) => {
-                    console.log(innerHTML)
                     let spanElementWithUsernameInside = `<span class="messageForm__replyContentUsername" contenteditable="false">${usernameSpan.innerHTML}</span>`;
                     !innerHTML.includes(spanElementWithUsernameInside) && setReplyCommentData(null);
             }
             if(replyCommentData){
+                if(replyCommentData.toReplyUsername !== lastToReplyUser?.toReplyUsername){
+                    textareaElem.innerText = textareaElem.innerText.replace("@" + lastToReplyUser?.toReplyUsername, '');
+                }else{
+                    return;
+                }
                 usernameSpan = document.createElement('span');
                 usernameSpan.className = "messageForm__replyContentUsername";
                 usernameSpan.innerText = ` @${replyCommentData.toReplyUsername}`
@@ -26,6 +31,7 @@ function SendMessageForm({ replyCommentData, setReplyCommentData }) {
                 textareaElem.addEventListener('input',checkIfUserRemovedReplierNameFromComment);
                 textareaElem.dispatchEvent(new Event('input', {bubbles:true}));
             }
+            setLastToReplyUser(replyCommentData);
             return () => textareaElem.removeEventListener('input',checkIfUserRemovedReplierNameFromComment);
         }
     }, [replyCommentData, setReplyCommentData]);
@@ -45,11 +51,11 @@ function SendMessageForm({ replyCommentData, setReplyCommentData }) {
 
     
     async function getAnswerFromBot(message){
-        return await fetch(`https://paphus-botlibre.p.rapidapi.com/form-chat?instance=41705054&application=6053253515890681897&user=bromot&password=RopaDotaProgramacion123%24&conversation=1234&message=${message}%20%20Bot`, {
+        return await fetch(`https://paphus-botlibre.p.rapidapi.com/form-chat?instance=41705054&application=6053253515890681897&user=${process.env.REACT_APP_API_USERNAME}&password=${process.env.REACT_APP_API_PASSWORD}&conversation=1234&message=${message}%20%20Bot`, {
           "method": "GET",
           "headers": {
             "x-rapidapi-host": "paphus-botlibre.p.rapidapi.com",
-            "x-rapidapi-key": "f3357837d2msha87c0ca429af181p18635cjsn1e157bb79c75"
+            "x-rapidapi-key": process.env.REACT_APP_API_KEY
             }
           })
           .then(res => res.text())

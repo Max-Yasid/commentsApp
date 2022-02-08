@@ -18,3 +18,8 @@
     grid-template-columns: 1fr 1fr;
     max-width: 85%;
 }
+@media only screen and (min-width: 800px){
+    .modal__content{
+        max-width: 50%;
+    }
+}

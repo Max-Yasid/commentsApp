@@ -6,6 +6,10 @@ export const CommentOption = styled.button`
     cursor:pointer;
     background-color: transparent;
     border: none;
+    transition: opacity .2s linear;
+    :hover{
+        opacity: .4
+    }
     ${
         props => props.danger && css`
             color: var(--danger-color)

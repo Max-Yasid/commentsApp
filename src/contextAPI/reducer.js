@@ -17,7 +17,7 @@ export default function commentsReducer(store, action){
             if(action.payload.parentId){
                 repliedCommentPos = store.comments.findIndex(comment => comment.id === action.payload.parentId);
             }else{
-                repliedCommentPos = store.comments.findIndex(comment => {console.log(comment.id,action.payload.replyId);return comment.id === action.payload.replyId});
+                repliedCommentPos = store.comments.findIndex(comment => {return comment.id === action.payload.replyId});
             }
             store.comments[repliedCommentPos].replies.push(action.payload);
             store.comments[repliedCommentPos].replies[store.comments[repliedCommentPos].replies.length - 1].score = 0;

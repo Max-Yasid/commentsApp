@@ -84,6 +84,7 @@
     border: none;
     padding: 13px 20px;
     border-radius: 7px;
+    transition: opacity .2s linear;
 }
 .comment__replyContentUsername{
     color: var(--main-color);
@@ -102,6 +103,12 @@
     display: grid;
     place-items: center;
 }
+.comment__options{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 15px;
+}
 .comment__likeComment, .comment__dislikeComment{
     border: 0;
     background-color: transparent;
@@ -110,9 +117,51 @@
     font-weight: bolder;
     cursor: pointer;
 }
-.comment__options{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 15px;
+
+@media only screen and (min-width: 800px) {
+        .comment{
+        grid-template-columns: 10% 58% 32%;
+        gap: 10px;
+        padding: 20px 30px;
+        }
+        .comment__content{
+            grid-column: 2/4;
+        }
+        .comment__likesContainer{
+            grid-row: 1/3;
+            grid-column: 1/2;
+            display: flex;
+            justify-content: center;
+        }
+        .comment__likes{
+            grid-template-columns: 1fr;
+            height: 95%;
+            width: 70%;
+        }
+        .comment__header{
+            grid-column: 2/3;
+            display: flex;
+            gap: 5%;
+            align-items: center;
+        }
+        .comment__date{
+            margin-left: 0px;
+            margin-right: auto;
+        }
+        .comment_youText{
+            font-size: 16px !important;
+            padding: 4px 8px;
+        }
+        .comment__options{
+            grid-column: 3/4;
+            grid-row: 1/2;
+            gap: 10px;
+        }
+        .comment__editButtonContainer{
+            grid-column: 1/4;
+            text-align: end;
+        }
+        .comment__btnEdit:hover{
+            opacity: .4;
+        }
 }

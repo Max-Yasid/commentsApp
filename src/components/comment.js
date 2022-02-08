@@ -91,7 +91,7 @@ const CommentTemplate = memo(({
 
     const isTheReplyAReplyFromAnotherComment = comment.parentId;
     if(isTheReplyAReplyFromAnotherComment){
-        parentCommentOwner = parentComment.replies.find(reply => reply.id === comment.replyId).user.username;
+        parentCommentOwner = parentComment.replies.find(reply => reply.id === comment.replyId)?.user.username;
     }
     let commentData = { id: comment.id, toReplyUsername: comment.user.username, parentId, toReplyAvatar: comment.user.image.png };
     function updateComment(){
@@ -191,7 +191,8 @@ const CommentTemplate = memo(({
                         onClick={() => setCommentIdUserWouldLikeToDelete({ id: comment.id, parentId })}
                     >
                         <img 
-                            src={deleteIcon} 
+                            src={deleteIcon}
+                            className="comment_deleteIcon"
                             alt="delete icon" 
                         /> Delete
                     </CommentOption>
