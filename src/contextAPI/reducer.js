@@ -114,7 +114,7 @@ export default function commentsReducer(store, action){
                 myLikedComments: store.myLikedComments,
         };
         default: 
-        console.log(store.comments);return store;
+        return store;
     }
 }
 

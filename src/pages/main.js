@@ -16,6 +16,7 @@ function Main(props) {
     deleteComment,
     editComment,
   } = useStore();
+  localStorage.setItem('comments', JSON.stringify(comments));
   const [ replyCommentData, setReplyCommentData] = useState(null);
   let [commentIdUserWouldLikeToDelete, setCommentIdUserWouldLikeToDelete] = useState(null);
   function deleteCommentHandler(){

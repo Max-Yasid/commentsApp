@@ -2,11 +2,12 @@ import { createContext, useReducer, useContext } from 'react';
 import Reducer, { initialState } from './reducer';
 import { ADD_COMMENT, DELETE_COMMENT, EDIT_COMMENT, LIKE_COMMENT, REMOVE_COMMENT_LIKE, REPLY__COMMENT } from "../constants";
 
-export const context = createContext(initialState);
+const localStoredComments = JSON.parse(localStorage.getItem('comments'));
+export const context = createContext(localStoredComments || initialState);
 
 function ContextProvider({ children }){
     
-    const [store, dispatch] = useReducer(Reducer, initialState);
+    const [store, dispatch] = useReducer(Reducer, localStoredComments || initialState);
 
     const storeActions = {
         addComment: (comment) => (dispatch({ type: ADD_COMMENT, payload: comment })),
