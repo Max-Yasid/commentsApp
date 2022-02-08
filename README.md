@@ -1,6 +1,10 @@
 # Frontend Mentor - Interactive comments section
 
-![Design preview for the Interactive comments section coding challenge](./design/desktop-preview.jpg)
+![Design preview for the Interactive comments section coding challenge](/public/resources/design/desktop-preview.jpg)
+
+# Live site url (DEMO)
+
+[]()
 
 ## Welcome! 👋
 
